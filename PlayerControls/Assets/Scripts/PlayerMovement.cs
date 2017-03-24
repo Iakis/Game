@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
 
     public float currentMoveSpeed;
-    private Transform trans;
-	// Use this for initialization
-	void Start () {
-        currentMoveSpeed = 1f;
-        trans = GetComponent<Transform>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start()
+    {
+        currentMoveSpeed = 5f;
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         //Movement
 
         if (Input.GetAxisRaw("Vertical") > 0)
