@@ -12,7 +12,8 @@ public class PlayerShooting : MonoBehaviour {
 	Vector3 downBulletPos;
 	Vector3 leftBulletPos;
 	Vector3 rightBulletPos;
-
+	bool shooting;
+	public float timeInterval;
 
 	Quaternion leftRot;
 	Quaternion rightRot;
@@ -21,11 +22,7 @@ public class PlayerShooting : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		upBulletPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1);
-		downBulletPos = new Vector3(player.transform.position.x , player.transform.position.y, player.transform.position.z - 1);
-		leftBulletPos = new Vector3(player.transform.position.x - 1, player.transform.position.y, player.transform.position.z);
-		rightBulletPos = new Vector3(player.transform.position.x + 1, player.transform.position.y, player.transform.position.z);
-
+		timeInterval = 1f * Time.deltaTime;
 		leftRot = new Quaternion(90, 90, -90, -90);
 		rightRot = new Quaternion(90, 90, 90, 90);
 		upRot = new Quaternion(0, 0, 0, 0);
@@ -35,25 +32,89 @@ public class PlayerShooting : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		//Positive z is forward, negative backwards - Positive x is right, negative is left
+
+		//Checks if you tap first. If you tap, shoots a single bullet and waits the preset amount of time before you're able to tap again
+		//Then checks if you hold down. If you hold down, continuously fires bullets spaced out by preset time
+
+
 		if (Input.GetKeyDown(KeyCode.LeftArrow))
-			Instantiate(bullet, leftBulletPos, leftRot);
+		{
+			leftBulletPos = new Vector3(player.transform.position.x - 1, player.transform.position.y, player.transform.position.z);
+			if (!shooting)
+			{
+				Instantiate(bullet, leftBulletPos, leftRot);
+				StartCoroutine(tapDelay(timeInterval));
+			}
+		}
 		else if (Input.GetKey(KeyCode.LeftArrow))
-			bulletPos = new
-		if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKey(KeyCode.RightArrow))
-			Instantiate(bullet, rightBulletPos, rightRot);
-		if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKey(KeyCode.UpArrow))
-			Instantiate(bullet, upBulletPos, upRot))
-		if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.DownArrow))
-			Instantiate(bullet, downBulletPos, downRot);
-		//if down else if held down call ienum
+		{
+			leftBulletPos = new Vector3(player.transform.position.x - 1, player.transform.position.y, player.transform.position.z);
+			if (!shooting)
+				StartCoroutine(shootDelay(timeInterval, leftRot, leftBulletPos, KeyCode.LeftArrow));
+		}
+		
+		if (Input.GetKeyDown(KeyCode.RightArrow))
+		{
+			rightBulletPos = new Vector3(player.transform.position.x + 1, player.transform.position.y, player.transform.position.z);
+			if (!shooting)
+			{
+				Instantiate(bullet, rightBulletPos, rightRot);
+				StartCoroutine(tapDelay(timeInterval));
+			}
+		}
+		else if (Input.GetKey(KeyCode.RightArrow))
+		{
+			rightBulletPos = new Vector3(player.transform.position.x + 1, player.transform.position.y, player.transform.position.z);
+			if (!shooting)
+				StartCoroutine(shootDelay(timeInterval, rightRot, rightBulletPos, KeyCode.RightArrow));
+		}
 
+		if (Input.GetKeyDown(KeyCode.UpArrow))
+		{
+			upBulletPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1);
+			if (!shooting)
+			{
+				Instantiate(bullet, upBulletPos, upRot);
+				StartCoroutine(tapDelay(timeInterval));
+			}
+		}
+		else if (Input.GetKey(KeyCode.UpArrow))
+		{
+			upBulletPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1);
+			if (!shooting)
+				StartCoroutine(shootDelay(timeInterval, upRot, upBulletPos, KeyCode.UpArrow));
+		}
 
+		if (Input.GetKeyDown(KeyCode.DownArrow))
+		{
+			downBulletPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 1);
+			if (!shooting)
+			{
+				Instantiate(bullet, downBulletPos, downRot);
+				StartCoroutine(tapDelay(timeInterval));
+			}
+		}
+		else if (Input.GetKey(KeyCode.DownArrow))
+		{
+			downBulletPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 1);
+			if (!shooting)
+				StartCoroutine(shootDelay(timeInterval, downRot, downBulletPos, KeyCode.DownArrow));
+		}
 	}
-	IEnumerable shootDelay(float time, Quaternion a)
+
+	IEnumerator shootDelay(float time, Quaternion a, Vector3 bul, KeyCode b)
 	{
-		Instantiate(bullet, bulletPos, a);
+		shooting = true;
 		yield return new WaitForSeconds(time);
-		Instantiate(bullet, bulletPos, a);
+		if (Input.GetKey(b))
+			Instantiate(bullet, bul, a);
+		shooting = false;
+	}
+
+	IEnumerator tapDelay(float time)
+	{
+		shooting = true;
+		yield return new WaitForSeconds(time);
+		shooting = false;
 	}
 }
