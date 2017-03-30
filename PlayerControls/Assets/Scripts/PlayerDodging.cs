@@ -27,7 +27,7 @@ public class PlayerDodging : MonoBehaviour
 	{
 
 		//Shift Dodging
-		
+
 		if (Input.GetKeyDown(KeyCode.LeftShift))
 		{
 			if (Input.GetAxisRaw("Vertical") > 0)
@@ -42,11 +42,11 @@ public class PlayerDodging : MonoBehaviour
 
 
 		//Double tap dodging
-		
+
 		if (Input.GetKeyDown(KeyCode.W))
 		{
 			if (timeLimit > 0 && tapCountW == 1)
-				transform.position += Vector3.forward  * dodgeDistance;
+				transform.position += Vector3.forward * dodgeDistance;
 			else
 			{
 				timeLimit = 0.5f;
@@ -60,7 +60,7 @@ public class PlayerDodging : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.S))
 		{
 			if (timeLimit > 0 && tapCountS == 1)
-				transform.position += Vector3.back  * dodgeDistance;
+				transform.position += Vector3.back * dodgeDistance;
 			else
 			{
 				timeLimit = 0.5f;
@@ -74,7 +74,7 @@ public class PlayerDodging : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.D))
 		{
 			if (timeLimit > 0 && tapCountD == 1)
-				transform.position += Vector3.right  * dodgeDistance;
+				transform.position += Vector3.right * dodgeDistance;
 			else
 			{
 				timeLimit = 0.5f;
@@ -88,7 +88,7 @@ public class PlayerDodging : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.A))
 		{
 			if (timeLimit > 0 && tapCountA == 1)
-				transform.position += Vector3.left  * dodgeDistance;
+				transform.position += Vector3.left * dodgeDistance;
 			else
 			{
 				timeLimit = 0.5f;
@@ -109,6 +109,6 @@ public class PlayerDodging : MonoBehaviour
 			tapCountS = 0;
 			tapCountD = 0;
 		}
-			
+
 	}
 }
