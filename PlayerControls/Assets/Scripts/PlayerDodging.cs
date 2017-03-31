@@ -8,16 +8,27 @@ public class PlayerDodging : MonoBehaviour
 	// Use this for initialization
 	public float timeLimit;
 	private float timeRemaining;
-	private int tapCountW, tapCountA, tapCountS, tapCountD;
+	bool canDodge;
+	int tapCountW;
+	int tapCountA;
+	int tapCountS;
+	int tapCountD;
+
+
+	//private int tapCountW, tapCountA, tapCountS, tapCountD;
 	public int dodgeDistance;
 	Vector3 temp;
 	void Start()
 	{
+
+
+
 		dodgeDistance = 10;
 		tapCountW = 0;
 		tapCountA = 0;
 		tapCountS = 0;
 		tapCountD = 0;
+
 
 		timeLimit = .5f;
 	}
@@ -46,7 +57,10 @@ public class PlayerDodging : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.W))
 		{
 			if (timeLimit > 0 && tapCountW == 1)
+			{
 				transform.position += Vector3.forward * dodgeDistance;
+				tapCountW = 0;
+			}
 			else
 			{
 				timeLimit = 0.5f;
@@ -60,7 +74,10 @@ public class PlayerDodging : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.S))
 		{
 			if (timeLimit > 0 && tapCountS == 1)
+			{
 				transform.position += Vector3.back * dodgeDistance;
+				tapCountS = 0;
+			}
 			else
 			{
 				timeLimit = 0.5f;
@@ -74,7 +91,10 @@ public class PlayerDodging : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.D))
 		{
 			if (timeLimit > 0 && tapCountD == 1)
+			{
 				transform.position += Vector3.right * dodgeDistance;
+				tapCountD = 0;
+			}
 			else
 			{
 				timeLimit = 0.5f;
@@ -88,7 +108,10 @@ public class PlayerDodging : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.A))
 		{
 			if (timeLimit > 0 && tapCountA == 1)
+			{
 				transform.position += Vector3.left * dodgeDistance;
+				tapCountA = 0;
+			}
 			else
 			{
 				timeLimit = 0.5f;
