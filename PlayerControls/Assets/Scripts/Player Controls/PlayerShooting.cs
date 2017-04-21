@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour {
 
-	RaycastHit hit;
-	Ray ray;
 	public GameObject bullet;
 	public GameObject player = null;
 	Vector3 upBulletPos;
@@ -13,7 +11,9 @@ public class PlayerShooting : MonoBehaviour {
 	Vector3 leftBulletPos;
 	Vector3 rightBulletPos;
 	bool shooting;
-	public float timeInterval;
+	public float currentTimeInterval;
+	public float baseTimeInterval;
+
 
 	Quaternion leftRot;
 	Quaternion rightRot;
@@ -22,7 +22,8 @@ public class PlayerShooting : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		timeInterval = 1f * Time.deltaTime;
+		baseTimeInterval = .2f;
+		currentTimeInterval = baseTimeInterval;
 		leftRot = new Quaternion(90, 90, -90, -90);
 		rightRot = new Quaternion(90, 90, 90, 90);
 		upRot = new Quaternion(0, 0, 0, 0);
@@ -30,9 +31,12 @@ public class PlayerShooting : MonoBehaviour {
 	}
 
 	// Update is called once per frame
+	public void setTimeInterval(float time)
+	{
+		currentTimeInterval = time;
+	}
 	void Update()
 	{
-
 		//Checks if you tap first. If you tap, shoots a single bullet and waits the preset amount of time before you're able to tap again
 		//Then checks if you hold down. If you hold down, continuously fires bullets spaced out by preset time
 
@@ -43,14 +47,14 @@ public class PlayerShooting : MonoBehaviour {
 			if (!shooting)
 			{
 				Instantiate(bullet, leftBulletPos, leftRot);
-				StartCoroutine(tapDelay(timeInterval));
+				StartCoroutine(tapDelay(currentTimeInterval));
 			}
 		}
 		else if (Input.GetKey(KeyCode.LeftArrow))
 		{
 			leftBulletPos = new Vector3(player.transform.position.x - 1, player.transform.position.y, player.transform.position.z);
 			if (!shooting)
-				StartCoroutine(shootDelay(timeInterval, leftRot, leftBulletPos, KeyCode.LeftArrow));
+				StartCoroutine(shootDelay(currentTimeInterval, leftRot, leftBulletPos, KeyCode.LeftArrow));
 		}
 		
 		if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -59,14 +63,14 @@ public class PlayerShooting : MonoBehaviour {
 			if (!shooting)
 			{
 				Instantiate(bullet, rightBulletPos, rightRot);
-				StartCoroutine(tapDelay(timeInterval));
+				StartCoroutine(tapDelay(currentTimeInterval));
 			}
 		}
 		else if (Input.GetKey(KeyCode.RightArrow))
 		{
 			rightBulletPos = new Vector3(player.transform.position.x + 1, player.transform.position.y, player.transform.position.z);
 			if (!shooting)
-				StartCoroutine(shootDelay(timeInterval, rightRot, rightBulletPos, KeyCode.RightArrow));
+				StartCoroutine(shootDelay(currentTimeInterval, rightRot, rightBulletPos, KeyCode.RightArrow));
 		}
 
 		if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -75,14 +79,14 @@ public class PlayerShooting : MonoBehaviour {
 			if (!shooting)
 			{
 				Instantiate(bullet, upBulletPos, upRot);
-				StartCoroutine(tapDelay(timeInterval));
+				StartCoroutine(tapDelay(currentTimeInterval));
 			}
 		}
 		else if (Input.GetKey(KeyCode.UpArrow))
 		{
 			upBulletPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1);
 			if (!shooting)
-				StartCoroutine(shootDelay(timeInterval, upRot, upBulletPos, KeyCode.UpArrow));
+				StartCoroutine(shootDelay(currentTimeInterval, upRot, upBulletPos, KeyCode.UpArrow));
 		}
 
 		if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -91,17 +95,16 @@ public class PlayerShooting : MonoBehaviour {
 			if (!shooting)
 			{
 				Instantiate(bullet, downBulletPos, downRot);
-				StartCoroutine(tapDelay(timeInterval));
+				StartCoroutine(tapDelay(currentTimeInterval));
 			}
 		}
 		else if (Input.GetKey(KeyCode.DownArrow))
 		{
 			downBulletPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 1);
 			if (!shooting)
-				StartCoroutine(shootDelay(timeInterval, downRot, downBulletPos, KeyCode.DownArrow));
+				StartCoroutine(shootDelay(currentTimeInterval, downRot, downBulletPos, KeyCode.DownArrow));
 		}
 	}
-
 	IEnumerator shootDelay(float time, Quaternion a, Vector3 bul, KeyCode b)
 	{
 		shooting = true;

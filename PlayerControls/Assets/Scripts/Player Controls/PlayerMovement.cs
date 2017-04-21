@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+	public float baseMoveSpeed;
     public float currentMoveSpeed;
     // Use this for initialization
     void Start()
-    {
-        currentMoveSpeed = 5f;
+	{
+		baseMoveSpeed = 5f;
+		currentMoveSpeed = baseMoveSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
 		//Movement
-
+		
 		/*if (Input.GetAxisRaw("Vertical") > 0)
             transform.Translate(Vector3.forward * currentMoveSpeed * Time.deltaTime);
         if (Input.GetAxisRaw("Vertical") < 0)
