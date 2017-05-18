@@ -20,7 +20,7 @@ public class MoveSpeedUp : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(movement.currentMoveSpeed);
+		
 		if (changed == true)
 		{
 			if (duration > 0)

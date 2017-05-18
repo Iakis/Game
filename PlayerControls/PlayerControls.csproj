@@ -80,7 +80,9 @@
     <Compile Include="Assets\Scripts\Player Controls\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player Controls\PlayerShooting.cs" />
     <Compile Include="Assets\Scripts\Upgrades\AtkSpUp.cs" />
+    <Compile Include="Assets\Scripts\Upgrades\Cone.cs" />
     <Compile Include="Assets\Scripts\Upgrades\MoveSpeedUp.cs" />
+    <Compile Include="Assets\Scripts\Upgrades\UpgradeTemplate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
