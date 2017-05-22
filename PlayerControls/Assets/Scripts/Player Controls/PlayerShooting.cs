@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour {
 
 	public GameObject bullet;
-	public GameObject player = null;
+	public GameObject player;
 	Vector3 upBulletPos;
 	Vector3 downBulletPos;
 	Vector3 leftBulletPos;
@@ -68,7 +68,7 @@ public class PlayerShooting : MonoBehaviour {
 			}
 			}
 			else if (Input.GetKey(KeyCode.LeftArrow))
-			{
+			{	w
 				leftBulletPos = new Vector3(player.transform.position.x - 1, player.transform.position.y, player.transform.position.z);
 				if (!shooting)
 					StartCoroutine(shootDelay(currentTimeInterval, leftRot, leftBulletPos, KeyCode.LeftArrow));

@@ -75,10 +75,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AI\MoveTowards.cs" />
+    <Compile Include="Assets\Scripts\AI\Waves.cs" />
     <Compile Include="Assets\Scripts\Bullet Object\Bullet.cs" />
     <Compile Include="Assets\Scripts\Player Controls\PlayerDodging.cs" />
     <Compile Include="Assets\Scripts\Player Controls\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player Controls\PlayerShooting.cs" />
+    <Compile Include="Assets\Scripts\Player Controls\Shooting.cs" />
+    <Compile Include="Assets\Scripts\Player Controls\ShotCreation.cs" />
     <Compile Include="Assets\Scripts\Upgrades\AtkSpUp.cs" />
     <Compile Include="Assets\Scripts\Upgrades\Cone.cs" />
     <Compile Include="Assets\Scripts\Upgrades\MoveSpeedUp.cs" />
