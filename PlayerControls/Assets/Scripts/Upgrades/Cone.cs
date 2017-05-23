@@ -21,7 +21,7 @@ public class Cone : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		Debug.Log(playershoot.coneChanged);	
+		//Debug.Log(playershoot.coneChanged);	
 		//Timer. Change BaseTimeInterval to change how long it lasts
 		if (changed == true)
 		{

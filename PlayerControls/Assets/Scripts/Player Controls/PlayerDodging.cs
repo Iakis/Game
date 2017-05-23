@@ -53,7 +53,7 @@ public class PlayerDodging : MonoBehaviour
 
 
 		//Double tap dodging
-
+/*
 		if (Input.GetKeyDown(KeyCode.W))
 		{
 			if (timeLimit > 0 && tapCountW == 1)
@@ -132,6 +132,6 @@ public class PlayerDodging : MonoBehaviour
 			tapCountS = 0;
 			tapCountD = 0;
 		}
-
+		*/
 	}
 }

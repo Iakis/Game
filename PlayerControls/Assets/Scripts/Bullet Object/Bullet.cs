@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		bulletSpeed = 1.5f;
+		bulletSpeed = 1f;
 		
 	}
 	
