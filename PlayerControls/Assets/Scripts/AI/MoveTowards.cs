@@ -1,16 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MoveTowards : MonoBehaviour
 {
 	public GameObject target;
 	public float speed;
-	public Collider col;
+	private Collider col;
+	bool inputed;
+	public Text cont;
+
+	public GameMan gameManageScript;
+	public GameObject gameManageEmpty;
 	private void Start()
 	{
-
 		col = target.GetComponent<Collider>();
+		gameManageEmpty = GameObject.FindGameObjectWithTag("GamManage");
+		gameManageScript = gameManageEmpty.GetComponent<GameMan>();
 	}
 
 	void Update()
@@ -22,8 +30,8 @@ public class MoveTowards : MonoBehaviour
 	{
 		if (other == col)
 		{
-			Destroy(target);
+			gameManageScript.loseScreen();
+			
 		}
 	}
-
 }	

@@ -30,6 +30,10 @@ public class Health : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "bullet")
+		{
 			health--;
+			Destroy(other.gameObject);
+		}
+
 	}
 }

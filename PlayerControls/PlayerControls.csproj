@@ -75,9 +75,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AI\Health.cs" />
     <Compile Include="Assets\Scripts\AI\MoveTowards.cs" />
-    <Compile Include="Assets\Scripts\AI\Waves.cs" />
     <Compile Include="Assets\Scripts\Bullet Object\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Managers\Scripts\BonusSpawner.cs" />
+    <Compile Include="Assets\Scripts\Managers\Scripts\EnemiesRem.cs" />
+    <Compile Include="Assets\Scripts\Managers\Scripts\GameMan.cs" />
+    <Compile Include="Assets\Scripts\Managers\Scripts\LoseScene.cs" />
+    <Compile Include="Assets\Scripts\Managers\Scripts\TextManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\Waves.cs" />
     <Compile Include="Assets\Scripts\Player Controls\PlayerDodging.cs" />
     <Compile Include="Assets\Scripts\Player Controls\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player Controls\PlayerShooting.cs" />

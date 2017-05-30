@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveSpeedUp : MonoBehaviour {
+public class MoveSpeedUp : MonoBehaviour
+{
 
 	public float baseDuration;
 	float duration;
@@ -10,46 +11,25 @@ public class MoveSpeedUp : MonoBehaviour {
 	bool changed;
 	public GameObject player;
 	PlayerMovement movement;
+	MeshRenderer mesh;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		duration = baseDuration;
 		changed = false;
 		movement = player.GetComponent<PlayerMovement>();
-
+		mesh = this.GetComponent<MeshRenderer>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-		if (changed == true)
-		{
-			if (duration > 0)
-				duration -= Time.deltaTime;
-			else
-			{
-				changed = false;
-				duration = baseDuration;
-			}
-		}
-		if (changed == false)
-			movement.currentMoveSpeed = movement.baseMoveSpeed;
+	void Update ()
+	{
 	}
 	private void OnTriggerEnter(Collider other)
 	{
-		if (changed == false)
-		{
 			if (other = player.GetComponent<Collider>())
 			{
-				grantMoveSpeed();
+//
 			}
-		}
 	}
-
-	public void grantMoveSpeed()
-	{
-		changed = true;
-		movement.currentMoveSpeed += amp;
-	}
-
-
 }

@@ -11,12 +11,14 @@ public class AtkSpUp : MonoBehaviour {
 	float duration;
 	public float bonusAmp;
 	float tempTimeInterval;
+	MeshRenderer mesh;
 	// Use this for initialization
 	void Start () {
 		changed = false;
 		baseDuration = 2f;
 		duration = baseDuration;
 		playershoot = player.GetComponent<PlayerShooting>();
+		mesh = this.GetComponent<MeshRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -24,12 +26,14 @@ public class AtkSpUp : MonoBehaviour {
 		
 		if (changed == true)
 		{
+			mesh.enabled = false;
 			if (duration > 0)
 				duration -= Time.deltaTime;
 			else
 			{
 				changed = false;
 				duration = baseDuration;
+				Destroy(gameObject);
 			}		
 		}
 		if (changed == false)
@@ -42,7 +46,6 @@ public class AtkSpUp : MonoBehaviour {
 			if (other = player.GetComponent<Collider>())
 			{
 				grantAtkSp();
-				//Destroy(gameObject);
 			}
 		}
 	}
