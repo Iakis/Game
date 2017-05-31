@@ -47,11 +47,6 @@ public class MoveTowards : MonoBehaviour
 		}
 
 
-
-
-
-
-
 		//Debug.Log((int)(((Mathf.Atan2(diff.z, diff.x) * Mathf.Rad2Deg) + 135f) / 90));
 		transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
 	}

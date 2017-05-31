@@ -36,10 +36,12 @@ public class PlayerShooting : MonoBehaviour {
 		baseTimeInterval = .2f;
 		currentTimeInterval = baseTimeInterval;
 
-		
 
-		leftRot = new Quaternion(90, 90, -90, -90);
-		rightRot = new Quaternion(90, 90, 90, 90);
+
+		//leftRot = new Quaternion(90, 90, -90, -90);
+		//rightRot = new Quaternion(90, 90, 90, 90);
+		rightRot = Quaternion.Euler(Vector3.up * 90);
+		leftRot = Quaternion.Euler(Vector3.up * -90);
 		upRot = new Quaternion(0, 0, 0, 0);
 		downRot = new Quaternion(0, 90, 0, 0);
 
