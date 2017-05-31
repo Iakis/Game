@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -77,8 +79,13 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AI\Health.cs" />
     <Compile Include="Assets\Scripts\AI\MoveTowards.cs" />
-    <Compile Include="Assets\Scripts\AI\Waves.cs" />
     <Compile Include="Assets\Scripts\Bullet Object\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Managers\Scripts\BonusSpawner.cs" />
+    <Compile Include="Assets\Scripts\Managers\Scripts\EnemiesRem.cs" />
+    <Compile Include="Assets\Scripts\Managers\Scripts\GameMan.cs" />
+    <Compile Include="Assets\Scripts\Managers\Scripts\LoseScene.cs" />
+    <Compile Include="Assets\Scripts\Managers\Scripts\TextManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\Waves.cs" />
     <Compile Include="Assets\Scripts\Player Controls\PlayerDodging.cs" />
     <Compile Include="Assets\Scripts\Player Controls\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player Controls\PlayerShooting.cs" />
